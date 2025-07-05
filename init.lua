@@ -13,3 +13,8 @@ end)
 hs.hotkey.bind({"cmd"}, "4", function()
   hs.application.launchOrFocus("DBeaver")
 end)
+
+-- installed as a PWA
+hs.hotkey.bind({"cmd"}, "5", function()
+  hs.application.launchOrFocus("T3chat")
+end)
