@@ -18,3 +18,15 @@ end)
 hs.hotkey.bind({"cmd"}, "5", function()
   hs.application.launchOrFocus("T3chat")
 end)
+
+hs.hotkey.bind({"cmd", "shift"}, "p", function()
+    -- Get all running applications
+    local apps = hs.application.runningApplications()
+    
+    -- Close each application
+    for _, app in pairs(apps) do
+        if app:isFrontmost() or app:kind() > 0 then  -- Only close GUI applications
+            app:kill()
+        end
+    end
+end)
