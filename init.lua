@@ -14,19 +14,26 @@ hs.hotkey.bind({"cmd"}, "4", function()
   hs.application.launchOrFocus("DBeaver")
 end)
 
--- installed as a PWA
 hs.hotkey.bind({"cmd"}, "5", function()
-  hs.application.launchOrFocus("T3chat")
+  hs.application.launchOrFocus("T3chat") -- installed as a PWA
 end)
 
-hs.hotkey.bind({"cmd", "shift"}, "p", function()
-    -- Get all running applications
-    local apps = hs.application.runningApplications()
-    
-    -- Close each application
-    for _, app in pairs(apps) do
-        if app:isFrontmost() or app:kind() > 0 then  -- Only close GUI applications
-            app:kill()
-        end
-    end
+-- change between windows of the same app
+hs.hotkey.bind({"cmd"}, "\\", function()
+    local win = hs.window.focusedWindow()
+    if not win then return end
+    local app = win:application()
+    if not app then return end
+    local windows = hs.fnutils.filter(app:allWindows(), function(w)
+        return w:isStandard() and w:isVisible()
+    end)
+    if #windows <= 1 then return end
+
+    table.sort(windows, function(a, b)
+        return a:id() < b:id()
+    end)
+
+    local currentIndex = hs.fnutils.indexOf(windows, win)
+    local nextIndex = (currentIndex % #windows) + 1
+    windows[nextIndex]:focus()
 end)
