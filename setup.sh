@@ -1,10 +1,5 @@
 #!/bin/sh -e
 
-##### installing dependencies
-DEPENDENCIES='fastfetch jq'
-printf "%b\n" "Installing dependencies..."
-brew install $DEPENDENCIES
-
 ##### system cleanup
 printf "%b\n" "Performing system cleanup..."
 
