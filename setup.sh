@@ -34,8 +34,7 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 defaults write com.apple.finder "FXRemoveOldTrashItems" -bool "true"
 
 # Remove .DS_Store files to reset folder view settings
-####  REPLACE PATH HERE BUT IT'S BETTER TO REMOVE IT MANUALLY. Not necessary on new intalls####
-# find ~/Users/user/ -name ".DS_Store" -type f -delete 2>/dev/null || true
+find ~/Users/user/ -name ".DS_Store" -type f -delete 2>/dev/null || true
 
 # Show all filename extensions
 # not necessary
