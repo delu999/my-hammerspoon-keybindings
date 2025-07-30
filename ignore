@@ -1,0 +1,11 @@
+#.config/fd/ignore
+neovim/
+OrbStack/
+Library/
+Public/
+Music/
+Movies/
+Pictures/
+Applications/
+!.ssh/
+!.config/
